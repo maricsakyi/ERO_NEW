@@ -252,29 +252,29 @@ class DynamicMemory(object):
             # No space, "remove" the first item.
             self.count+=1
             print("inside[",self.count,"]")
-            '''keep=self.rewards.data.flatten()
-            if self.count%2000==0:
+            keep=self.rewards.data.flatten()
+            '''if self.count%2000==0:
                 k=np.argmin(keep)
             else:
-                k=np.argmax(keep)
+                k=np.argmax(keep)'''
             
            
 
             #creating probabilities of rewards and using alpha to control the uniformity of the probability
-            #prob1=(keep- min(keep))/(max(keep)-np.min(keep))
-            #prob1=np.exp(-2.0*0.5*prob1)
-            #prob1=prob1/sum(prob1)
+            prob1=(keep- min(keep))/(max(keep)-np.min(keep))
+            prob1=np.exp(-2.0*0.5*prob1)
+            prob1=prob1/sum(prob1)
             #print(prob1)
-            #k=np.argwhere(keep==(np.random.choice(keep,1,p=prob1)))
-            #k=k.flatten()
+            k=np.argwhere(keep==(np.random.choice(keep,1,p=prob1)))
+            k=k.flatten()
             #print(k)
-            #k=k.item(0)
+            k=k.item(0)
             #print(k)
             #print("psition",k)
             #start = k.reshape(1)
             #return np.argmax(self.rewards.data)
-            #return k
-            if self.epsilon>0.001:
+            return k
+            '''if self.epsilon>0.001:
                 self.epsilon=self.epsilon*0.001
             else:
                 self.epsilon=self.epsilon*1
@@ -288,7 +288,7 @@ class DynamicMemory(object):
                 k = np.random.choice((keep.size)-1)
                 #= np.random.choice(np.argmin(keep))'''
                 
-            keep=self.rewards.data.flatten()
+           ''' keep=self.rewards.data.flatten()
             
             
             prio=keep/sum(keep)
@@ -298,7 +298,7 @@ class DynamicMemory(object):
             k=k.flatten()
             k=k.item(0)
             #print(k)
-            return k
+            return k'''
     
     
     def update_probs(self, idxes, probs):

@@ -251,7 +251,7 @@ class DynamicMemory(object):
     def new_append(self):
             # No space, "remove" the first item.
             self.count+=1
-            print("inside[",self.count,"]")
+            print("inside:[",self.count,"]")
             keep=self.rewards.data.flatten()
             '''if self.count%2000==0:
                 k=np.argmin(keep)

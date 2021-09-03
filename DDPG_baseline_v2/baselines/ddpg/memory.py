@@ -252,11 +252,16 @@ class DynamicMemory(object):
             # No space, "remove" the first item.
             self.count+=1
             print("inside:[",self.count,"]")
+<<<<<<< HEAD
             keep=self.rewards.data.flatten()
             '''if self.count%2000==0:
+=======
+            '''keep=self.rewards.data.flatten()
+            if self.count%2000==0:
+>>>>>>> 3ba2932b2344360f4347ef69da79992fed4604ee
                 k=np.argmin(keep)
             else:
-                k=np.argmax(keep)'''
+                k=np.argmax(keep)
             
            
 
@@ -274,7 +279,7 @@ class DynamicMemory(object):
             #start = k.reshape(1)
             #return np.argmax(self.rewards.data)
             return k
-            '''if self.epsilon>0.001:
+            if self.epsilon>0.001:
                 self.epsilon=self.epsilon*0.001
             else:
                 self.epsilon=self.epsilon*1
@@ -288,8 +293,7 @@ class DynamicMemory(object):
                 k = np.random.choice((keep.size)-1)
                 #= np.random.choice(np.argmin(keep))'''
                 
-           ''' keep=self.rewards.data.flatten()
-            
+            keep=self.rewards.data.flatten()
             
             prio=keep/sum(keep)
             prob1=prio**self.alpha
@@ -298,7 +302,7 @@ class DynamicMemory(object):
             k=k.flatten()
             k=k.item(0)
             #print(k)
-            return k'''
+            return k
     
     
     def update_probs(self, idxes, probs):
